@@ -3,7 +3,7 @@
 
 struct nodo{
     int val;
-    struct nodo *siguiente;
+    struct nodo *next;
 };
 
 void agregar(struct nodo *, int);
@@ -19,32 +19,28 @@ int main()
     for(i = 2; i<=3; i++){      
         struct nodo *newNodo = malloc(sizeof(struct nodo));
         newNodo-> val = i;
-        cur-> siguiente = newNodo;
+        cur-> next = newNodo;
         cur = newNodo;
     }
-    cur-> siguiente = NULL;
+    cur-> next = NULL;
     
     imprimir(cabeza);    
-    //agregar(cur,4);
-    //imprimir(cabeza);
-    //eliminar(cabeza,0);
-    //imprimir(cabeza);
     
     return 0;
 }
 
 void agregar(struct nodo *cur, int n)
 {
-    struct nodo *nodooo = malloc(sizeof(struct nodo));
-    nodooo-> val = n;
-    nodooo-> siguiente = NULL;
-    cur->siguiente = nodooo;  
+    struct nodo *nodomas = malloc(sizeof(struct nodo));
+    nodomas-> val = n;
+    nodomas-> next = NULL;
+    cur->next = nodomas;  
 }
 
 void imprimir(struct nodo *cabeza)
 {
     struct nodo *cur;
-    for(cur = cabeza; cur != NULL; cur = cur->siguiente){
+    for(cur = cabeza; cur != NULL; cur = cur->next){
         printf("%d -> ", cur->val);
     }
     printf("\n");
@@ -56,7 +52,7 @@ void eliminar(struct nodo *cabeza, int n)
     struct nodo *prev = cabeza;
     printf("%d\n",cabeza->val);
     if (cabeza-> val == n){
-        cabeza = cabeza->siguiente;
+        cabeza = cabeza->next;
         free(prev);
     }
 
